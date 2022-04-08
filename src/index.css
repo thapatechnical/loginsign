@@ -1,13 +1,308 @@
-body {
+/*   color variables */
+/*   border radius */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --text: #111111;
+}
+
+body {
+  font-family: "Convergence", sans-serif;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  /* max-width: 170rem; */
+  margin: 0 auto;
+  height: 100vh;
+  padding: 0 10rem;
+}
+
+.grid {
+  display: grid;
+  gap: 9rem;
+}
+
+.grid-two-column {
+  grid-template-columns: 2fr 1fr;
+}
+
+.login-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./hero.png);
+  background-repeat: no-repeat;
+  background-size: 100% 95%;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
+.login-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.logo-image {
+  width: 30rem;
+  height: 10%;
+}
+
+.login-data .bold-text {
+  font-size: 3.2rem;
+  text-transform: capitalize;
+  margin: 2rem 0;
+  font-weight: bold;
+}
+
+.register-data .bold-text {
+  margin-bottom: 0rem;
+}
+
+.register-section .register-data .register-para {
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.form {
+  position: relative;
+  min-width: 35rem;
+  height: 5rem;
+}
+.form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  border: 2px solid #e1e5ee;
+  border-radius: 0.8rem;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--text);
+  outline: none;
+  padding: 1.8rem;
+  background: none;
+  /* Change border when input focus*/
+}
+
+.login-form .form__input {
+  width: 100%;
+}
+.form__label {
+  position: absolute;
+  left: 1rem;
+  top: 1.2rem;
+  padding: 0 0.5rem;
+  color: var(--text);
+  cursor: text;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background-color: white;
+}
+
+/* 
+1. When the input is in the focus state
+reduce the size of the label and move upwards 
+
+2. Keep label state when content is in input field 
+*/
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -0.7rem;
+  font-size: 1rem;
+  left: 1rem;
+  font-weight: 400;
+}
+
+.checkbox {
+  display: flex;
+  gap: 1.2rem;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.common-para {
+  font-size: 1.4rem;
+  margin: 2rem 0;
+}
+
+.register-data .common-para {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.register-data .checkbox .common-para {
+  color: var(--text);
+  margin: 0;
+}
+
+.register-data .checkbox .common-para a {
+  color: #0c88ff;
+}
+
+form .common-para {
+  margin: 0;
+  color: #0c88ff;
+}
+
+.forgotPassword a {
+  text-decoration: underline;
+}
+
+[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(1, 12, 23);
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  outline: 0;
+  flex-grow: 0;
+
+  background-color: #ffffff;
+  transition: background 300ms;
+  cursor: pointer;
+}
+
+/* Pseudo element for check styling */
+
+[type="checkbox"]::before {
+  content: "";
+  color: white;
+  display: block;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  box-shadow: inset 0 0 0 1px #ccd3d8;
+}
+
+/* Checked */
+
+[type="checkbox"]:checked {
+  background-color: currentColor;
+}
+
+[type="checkbox"]:checked::before {
+  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E");
+}
+
+.btn {
+  padding: 1.6rem 6rem;
+  border-radius: 0.8rem;
+  background-color: rgb(241, 107, 34);
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.8rem;
+  max-width: 50%;
+  cursor: pointer;
+  box-shadow: rgba(241, 107, 34, 0.5) 0px 10px 20px 0px,
+    rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+}
+
+.register-btn {
+  max-width: 80%;
+}
+
+.social-btn {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.loginsection .social-btn {
+  margin-top: 0;
+}
+
+.register-section .social-btn {
+  margin-top: 2rem;
+}
+
+.social-btn .fa-brands,
+.social-btn .fa-solid {
+  padding: 1.6rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.fa-facebook-f {
+  background-color: #3b5998;
+}
+
+.fa-m {
+  background-color: #ea4335;
+}
+
+.fa-linkedin-in {
+  background-color: #0a66c2;
+}
+
+@media (max-width: 1280px) {
+  .container {
+    max-width: 90%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .grid {
+    gap: 0rem;
+  }
+
+  .grid-two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .login-image {
+    height: 40vh;
+  }
+
+  .login-data {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
 }
